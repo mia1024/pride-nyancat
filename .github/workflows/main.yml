@@ -20,7 +20,7 @@ jobs:
         run: make
       - uses: actions/upload-artifact@v2
         with:
-          name: pride-nyancat-ubuntu
+          name: Ubuntu
           path: pride-nyancat
   macOS:
     runs-on: macos-latest
@@ -33,5 +33,5 @@ jobs:
         run: make
       - uses: actions/upload-artifact@v2
         with:
-          name: pride-nyancat-macOS
+          name: macOS
           path: pride-nyancat
