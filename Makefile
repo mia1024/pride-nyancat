@@ -1,5 +1,5 @@
-package = nyancat
-version = 1.6.2
+package = pride-nyancat
+version = 2.0.0
 tarname = $(package)
 distdir = $(tarname)-$(version)
 
@@ -37,7 +37,6 @@ distcheck: $(distdir).tar.gz
 	@echo "*** Package $(distdir).tar.gz is ready for distribution."
 
 install: all
-	install src/nyancat /usr/bin/${package}
-	gzip -9 -c < nyancat.1 > /usr/share/man/man1/nyancat.1.gz
+	install src/pride-nyancat /usr/local/bin/${package}
 
 .PHONY: FORCE all clean check dist distcheck install
