@@ -8,14 +8,9 @@ on:
   push:
     branches: [ master ]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest,windows-latest]
+  ubuntu:
+    runs-on: ubuntu-16.04
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -25,5 +20,18 @@ jobs:
         run: make
       - uses: actions/upload-artifact@v2
         with:
-          name: pride-nyancat
+          name: pride-nyancat-ubuntu
+          path: pride-nyancat
+  macOS:
+    runs-on: macos-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@v2
+        
+      - name: Make
+        run: make
+      - uses: actions/upload-artifact@v2
+        with:
+          name: pride-nyancat-macOS
           path: pride-nyancat
