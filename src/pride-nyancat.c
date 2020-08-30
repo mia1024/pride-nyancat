@@ -311,18 +311,6 @@ int main(int argc, char **argv) {
             case 'f':
                 frame_count = atoi(optarg);
                 break;
-            case 'r':
-                min_row = atoi(optarg);
-                break;
-            case 'R':
-                max_row = atoi(optarg);
-                break;
-            case 'c':
-                min_col = atoi(optarg);
-                break;
-            case 'C':
-                max_col = atoi(optarg);
-                break;
             case 'W':
                 min_col = (FRAME_WIDTH - atoi(optarg)) / 2;
                 max_col = (FRAME_WIDTH + atoi(optarg)) / 2;

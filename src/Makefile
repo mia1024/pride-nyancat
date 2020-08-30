@@ -1,7 +1,7 @@
 OBJECTS = pride-nyancat.o
 
 CC	?=
-CFLAGS	 ?= -g -Wall -Wextra -std=c99 -pedantic -Wwrite-strings
+CFLAGS	 ?= -g -Wall -Wextra -std=c99 -pedantic -Wwrite-strings -O3
 CPPFLAGS ?=
 LDFLAGS  ?=
 
