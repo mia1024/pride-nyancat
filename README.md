@@ -1,6 +1,7 @@
 # Pride Flag Nyancat
 
 Nyancat, but with pride.
+![Rainbow flag](img/G.gif)
 
 ## Description
 
@@ -28,28 +29,28 @@ By default, the rainbow flag is displayed. To change the flag that is rendered, 
 the first letter of the flag as a flag (pun intended) to the program.
 
 ```pride-nyancat -L```
-![Lesbian Flag](img/L.png)
+![Lesbian Flag](img/L.gif)
 
 ```pride-nyancat -G```
-![Gay Flag](img/G.png)
+![Gay Flag](img/G.gif)
 
 ```pride-nyancat -B```
-![Bisexual Flag](img/B.png)
+![Bisexual Flag](img/B.gif)
 
 ```pride-nyancat -T```
-![Transgender Flag](img/T.png)
+![Transgender Flag](img/T.gif)
 
 ```pride-nyancat -Q```
-![Queer Flag](img/Q.png)
+![Queer Flag](img/Q.gif)
 
 ```pride-nyancat -A```
-![Asexual Flag](img/A.png)
+![Asexual Flag](img/A.gif)
 
 ```pride-nyancat -N```
-![Non-binary Flag](img/N.png)
+![Non-binary Flag](img/N.gif)
 
 ```pride-nyancat -P```
-![Pansexual Flag](img/P.png)
+![Pansexual Flag](img/P.gif)
 
 ## Alternative spellings
 
