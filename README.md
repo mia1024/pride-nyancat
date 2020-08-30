@@ -1,34 +1,57 @@
 # Pride Flag Nyancat
 
-![Lesbian Flag](img/L.png)
-![Gay Flag](img/G.png)
-![Bisexual Flag](img/B.png)
-![Transgender Flag](img/T.png)
-![Queer Flag](img/Q.png)
-![Asexual Flag](img/A.png)
-![Non-binary Flag](img/N.png)
-![Pansexual Flag](img/P.png)
+Nyancat, but with pride.
 
-This repository is a modified version of K. Lange's [terminal nyancat](https://github.com/klange/nyancat). 
-As shown in the screenshots above, various pride flags, as well as terminal true color support have been added.
-In addition, the support for `telnet` (and therefore `systemd`) has been dropped.
-Due to the nature of the pride flags, support for legacy terminals have been dropped. To get an accurate reproduction
+## Description
+
+This repository is a modified version of K. Lange's [terminal nyancat](https://github.com/klange/nyancat) to 
+show a nyancat with pride flags. 
+Comparing to K. Lange's version, the support for `telnet` (and therefore `systemd`) has been dropped.
+Due to the nature of the pride flags, support for legacy terminals has also been dropped. To get an accurate reproduction
 of the pride flags, a terminal emulator with 
 [true color support](https://gist.github.com/XVilka/8346728#now-supporting-true-color) is recommended. At the bare
-minimal, support for xterm-256 color is required. 
+minimum, there should be support for xterm-256color. An attempt has been made to display the flags with 4 bit colors 
+(ANSI 16 colors), but it looks very bad and should not be relied on. 
 
-## Compilation
+## Installation
 
 ```bash
-git clone https://github.com/pkqxdd/pride-flag-nyancat
-cd pride-flag-nyancat
+git clone https://github.com/pkqxdd/pride-nyancat
+cd pride-nyancat
 make 
+make install
 ```
 
 ## Usage
 
 By default, the rainbow flag is displayed. To change the flag that is rendered, simply add
 the first letter of the flag as a flag (pun intended) to the program.
+
+```pride-nyancat -L```
+![Lesbian Flag](img/L.png)
+
+```pride-nyancat -G```
+![Gay Flag](img/G.png)
+
+```pride-nyancat -B```
+![Bisexual Flag](img/B.png)
+
+```pride-nyancat -T```
+![Transgender Flag](img/T.png)
+
+```pride-nyancat -Q```
+![Queer Flag](img/Q.png)
+
+```pride-nyancat -A```
+![Asexual Flag](img/A.png)
+
+```pride-nyancat -N```
+![Non-binary Flag](img/N.png)
+
+```pride-nyancat -P```
+![Pansexual Flag](img/P.png)
+
+## Alternative spellings
 
 The lesbian flag can be displayed with any of the following:
 ```bash
