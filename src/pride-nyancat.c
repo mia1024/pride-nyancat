@@ -218,7 +218,7 @@ void usage(char *argv[]) {
             "usage: %s [-htnLGBTQPNA] [-f \033[3mframes\033[0m] [-p l|g|b|t|q|a|nb|p]\n"
             "\n"
             " -L --lesbian    \033[3mShow the nyancat with lesbian flag\033[0m\n"
-            " -G --gay    \033[3mShow the nyancat with the gay flag. This is the default.\033[0m\n"
+            " -G --gay    \033[3mShow the nyancat with the gay flag. \033[0m\n"
             " -B --bisexual    \033[3mShow the nyancat with the bisexual flag\033[0m\n"
             " -T --transgender    \033[3mShow the nyancat with the transgender flag\033[0m\n"
             " -Q --queer    \033[3mShow the nyancat with the queer flag\033[0m\n"
@@ -254,9 +254,11 @@ int main(int argc, char **argv) {
 
 
     enum flag_type {
-        L, G, B, T, Q, NB, A, P
+        L=0, G=1, B=2, T=3, Q=4, NB=5, A=6, P=7
     };
-    enum flag_type flag = G;
+
+    srand(time(NULL));
+    enum flag_type flag = rand()%8;
 
     /* Long option names */
     static struct option long_opts[] = {

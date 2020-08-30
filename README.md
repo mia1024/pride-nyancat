@@ -1,7 +1,7 @@
 # Pride Flag Nyancat
 
 Nyancat, but with pride.
-![Rainbow flag](img/G.gif)
+![Transgender Flag](img/T.gif)
 
 ## Description
 
@@ -25,7 +25,7 @@ make install
 
 ## Usage
 
-By default, the rainbow flag is displayed. To change the flag that is rendered, simply add
+By default, a random flag is displayed. To specify the flag that is rendered, simply add
 the first letter of the flag as a flag (pun intended) to the program.
 
 ```pride-nyancat -L```
@@ -66,7 +66,6 @@ pride-nyancat -p l
 
 The gay flag can be displayed with any of the following:
 ```bash
-pride-nyancat
 pride-nyancat -G
 pride-nyancat --gay
 pride-nyancat --pride gay
