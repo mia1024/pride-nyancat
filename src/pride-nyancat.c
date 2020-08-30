@@ -1,7 +1,10 @@
 /*
- * Copyright (c) 2011-2018 K. Lange.  All rights reserved.
+ * Copyright (c) 2020 Mia Celeste.
  *
- * Developed by:            K. Lange
+ * Pride flags added by:    Mia Celeste
+ *                          https://github.com/mia1024/pride-flag-nyancat
+ *
+ * Animation developed by:  K. Lange
  *                          http://github.com/klange/nyancat
  *                          http://nyancat.dakko.us
  *
@@ -14,15 +17,8 @@
  *
  * For a complete listing of contributors, please see the git commit history.
  *
- * This is a simple telnet server / standalone application which renders the
- * classic Nyan Cat (or "poptart cat") to your terminal.
- *
- * It makes use of various ANSI escape sequences to render color, or in the case
- * of a VT220, simply dumps text to the screen.
- *
- * For more information, please see:
- *
- *     http://nyancat.dakko.us
+ * This is a standalone application which renders the
+ * classic Nyan Cat (or "poptart cat") with pride flags.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -373,6 +369,7 @@ int main(int argc, char **argv) {
                 break;
             case 'P':
                 flag=P;
+                break;
             case 'N':
                 flag=NB;
                 break;
@@ -521,6 +518,57 @@ int main(int argc, char **argv) {
     }
 
     switch (flag) {
+        case L:
+            switch (ttype) {
+                case 0:
+                    colors['>'] = "\033[48;2;198;59;30m";
+                    colors['&'] = "\033[48;2;243;160;99m";
+                    colors['+'] = "\033[48;2;255;255;255m";
+                    colors['#'] = "\033[48;2;199;106;163m";
+                    colors['='] = "\033[48;2;152;31;96m";
+                    break;
+                case 1:
+                    colors['>'] = "\033[48;5;166m";
+                    colors['&'] = "\033[48;5;215m";
+                    colors['+'] = "\033[48;5;231m";
+                    colors['#'] = "\033[48;5;169m";
+                    colors['='] = "\033[48;5;89m";
+                    break;
+                case 2:
+                    // 16 color approximation doesn't work on this
+                    printf("Unsupported terminal. Please use an xterm compatible terminal.\n");
+                    return 1;
+                    break;
+            }
+            break;
+        case G:
+            switch (ttype) {
+                case 0:
+                    colors['>'] = "\033[48;2;236;51;44m"; /* Red  */
+                    colors['&'] = "\033[48;2;244;168;74m"; /* Orange  */
+                    colors['+'] = "\033[48;2;255;254;104m"; /* Yellow  */
+                    colors['#'] = "\033[48;2;53;126;43m"; /* Green  */
+                    colors['='] = "\033[48;2;0;28;239m";  /* Light blue  */
+                    colors[';'] = "\033[48;2;123;26;121m";  /* Purple  */
+                    break;
+                case 1:
+                    colors['>'] = "\033[48;5;202m"; /* Red  */
+                    colors['&'] = "\033[48;5;215m"; /* Orange  */
+                    colors['+'] = "\033[48;5;227m"; /* Yellow  */
+                    colors['#'] = "\033[48;5;64m"; /* Green  */
+                    colors['='] = "\033[48;5;21m";  /* Light blue  */
+                    colors[';'] = "\033[48;5;90m";  /* Purple  */
+                    break;
+                case 2:
+                    colors['>'] = "\033[101m";      /* Red  */
+                    colors['&'] = "\033[43m";       /* Orange  */
+                    colors['+'] = "\033[103m";      /* Yellow  */
+                    colors['#'] = "\033[102m";      /* Green  */
+                    colors['='] = "\033[104m";      /* Light blue  */
+                    colors[';'] = "\033[45m";       /* Dark blue  */
+                    break;
+            }
+            break;
         case T: /*5 strips, > & + # =, */
             switch (ttype) {
                 case 0:
@@ -546,68 +594,106 @@ int main(int argc, char **argv) {
                     break;
             }
             break;
-        case L:
-            switch (ttype) {
-                case 0:
-                    colors['>'] = "\033[48;2;198;59;30m";
-                    colors['&'] = "\033[48;2;243;160;99m";
-                    colors['+'] = "\033[48;2;255;255;255m";
-                    colors['#'] = "\033[48;2;199;106;163m";
-                    colors['='] = "\033[48;2;152;31;96m";
-                    break;
-                case 1:
-                    colors['>'] = "\033[48;5;166m";
-                    colors['&'] = "\033[48;5;215m";
-                    colors['+'] = "\033[48;5;231m";
-                    colors['#'] = "\033[48;5;169m";
-                    colors['='] = "\033[48;5;89m";
-                    break;
-                case 2:
-                    colors['>'] = "\033[106m";      /* blue */
-                    colors['&'] = "\033[105m";       /* pink */
-                    colors['+'] = "\033[107m";      /* white */
-                    colors['#'] = "\033[105m";      /* pink */
-                    colors['='] = "\033[106m";      /* blue */
-                    break;
-            }
-            break;
-        case G:
-            switch (ttype) {
-                case 0:
-                    colors['>'] = "\033[48;2;236;51;44m"; /* Red  */
-                    colors['&'] = "\033[48;2;244;168;74m"; /* Orange  */
-                    colors['+'] = "\033[48;2;255;254;104m"; /* Yellow  */
-                    colors['#'] = "\033[48;2;53;126;43m"; /* Green  */
-                    colors['='] = "\033[48;2;0;28;239m";  /* Light blue  */
-                    colors[';'] = "\033[48;2;123;26;121m";  /* Purple  */
-                    break;
-                case 1:
-                    colors['>'] = "\033[48;5;196m"; /* Red  */
-                    colors['&'] = "\033[48;5;214m"; /* Orange  */
-                    colors['+'] = "\033[48;5;226m"; /* Yellow  */
-                    colors['#'] = "\033[48;5;118m"; /* Green  */
-                    colors['='] = "\033[48;5;33m";  /* Light blue  */
-                    colors[';'] = "\033[48;5;54m";  /* Purple  */
-                    break;
-                case 2:
-                    colors['>'] = "\033[101m";      /* Red  */
-                    colors['&'] = "\033[43m";       /* Orange  */
-                    colors['+'] = "\033[103m";      /* Yellow  */
-                    colors['#'] = "\033[102m";      /* Green  */
-                    colors['='] = "\033[104m";      /* Light blue  */
-                    colors[';'] = "\033[45m";       /* Dark blue  */
-                    break;
-            }
-            break;
         case B:
+            switch (ttype) {
+                case 0:
+                    colors['>'] = "\033[48;2;199;43;112m";
+                    colors['+'] = "\033[48;2;147;84;148m";
+                    colors['='] = "\033[48;2;14;56;163m";
+                    break;
+                case 1:
+                    colors['>'] = "\033[48;5;161m";
+                    colors['+'] = "\033[48;5;96m";
+                    colors['='] = "\033[48;5;25m";
+                    break;
+                case 2:
+                    colors['>'] = "\033[41m";
+                    colors['+'] = "\033[45m";
+                    colors['='] = "\033[104m";
+                    break;
+            }
             break;
         case Q:
+            switch (ttype) {
+                case 0:
+                    colors['>'] = "\033[48;2;175;131;215m";
+                    colors['+'] = "\033[48;2;255;255;255m";
+                    colors['='] = "\033[48;2;86;128;48m";
+                    break;
+                case 1:
+                    colors['>'] = "\033[48;5;140m";
+                    colors['+'] = "\033[48;5;231m";
+                    colors['='] = "\033[48;5;65m";
+                    break;
+                case 2:
+                    colors['>'] = "\033[105m";
+                    colors['+'] = "\033[107m";
+                    colors['='] = "\033[102m";
+                    break;
+            }
             break;
         case NB:
+            switch (ttype) {
+                case 0:
+                    colors['>'] = "\033[48;2;254;243;93m";
+                    colors['+'] = "\033[48;2;255;255;255m";
+                    colors['#'] = "\033[48;2;147;95;203m";
+                    colors[';'] = "\033[48;2;0;0;0m";
+                    break;
+                case 1:
+                    colors['>'] = "\033[48;5;227m";
+                    colors['+'] = "\033[48;5;231m";
+                    colors['#'] = "\033[48;5;98m";
+                    colors[';'] = "\033[48;5;16m";
+                    break;
+                case 2:
+                    colors['>'] = "\033[103m";
+                    colors['+'] = "\033[107m";
+                    colors['#'] = "\033[45m";
+                    colors[';'] = "\033[40m";
+                    break;
+            }
             break;
         case A:
+            switch (ttype) {
+                case 0:
+                    colors['>'] = "\033[48;2;0;0;0m";
+                    colors['+'] = "\033[48;2;164;164;164m";
+                    colors['#'] = "\033[48;2;255;255;255m";
+                    colors[';'] = "\033[48;2;119;25;125m";
+                    break;
+                case 1:
+                    colors['>'] = "\033[48;5;16m";
+                    colors['+'] = "\033[48;5;145m";
+                    colors['#'] = "\033[48;5;231m";
+                    colors[';'] = "\033[48;5;90m";
+                    break;
+                case 2:
+                    colors['>'] = "\033[40m";
+                    colors['+'] = "\033[47m";
+                    colors['#'] = "\033[107m";
+                    colors[';'] = "\033[45m";
+                    break;
+            }
             break;
         case P:
+            switch (ttype) {
+                case 0:
+                    colors['>'] = "\033[48;2;236;61;140m";
+                    colors['+'] = "\033[48;2;250;217;74m";
+                    colors['='] = "\033[48;2;80;177;249m";
+                    break;
+                case 1:
+                    colors['>'] = "\033[48;5;204m";
+                    colors['+'] = "\033[48;5;221m";
+                    colors['='] = "\033[48;5;75m";
+                    break;
+                case 2:
+                    colors['>'] = "\033[105m";
+                    colors['+'] = "\033[103m";
+                    colors['='] = "\033[107m";
+                    break;
+            }
             break;
     }
 
@@ -666,10 +752,29 @@ int main(int argc, char **argv) {
                     if ((i / 2) % 2) {
                         mod_x = 1 - mod_x;
                     }
-                    /*
-                     * Our rainbow, with some padding.
-                     */
-                    const char *rainbow = ",,>>&&&+++###==;;;,,";
+                    const char *rainbow;
+                    switch (flag) {
+                        case G:
+                            rainbow = ",,>>&&&+++###==;;;,,"; // 6 strips
+                            break;
+
+                        case L:
+                        case T:
+                            rainbow = ",,>>&&&+++###==,,,,,"; // 5 strips
+                            break;
+
+                        case P:
+                        case B:
+                        case Q:
+                            rainbow = ",,>>>>>++++++=====,,"; // 3 strips
+                            break;
+
+                        case A:
+                        case NB:
+                            rainbow = ",,>>>>++++####;;;;,,"; // 4 strips
+                            break;
+                    }
+
                     color = rainbow[mod_x + y - 23];
                     if (color == 0) color = ',';
                 } else if (x < 0 || y < 0 || y >= FRAME_HEIGHT || x >= FRAME_WIDTH) {
@@ -719,7 +824,7 @@ int main(int argc, char **argv) {
              * The \033[0m prevents the Apple ][ from flipping everything, but
              * makes the whole nyancat less bright on the vt220
              */
-            printf("\033[1;37mYou have nyaned for %0.0f seconds!\033[J\033[0m", diff);
+            printf("\033[1;37mYou have prided for %0.0f seconds!\033[J\033[0m", diff);
         }
         /* Reset the last color so that the escape sequences rewrite */
         last = 0;

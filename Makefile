@@ -1,10 +1,14 @@
 package = nyancat
-version = 1.5.2
+version = 1.6.2
 tarname = $(package)
 distdir = $(tarname)-$(version)
 
-all clean check nyancat:
+all check nyancat:
 	cd src && $(MAKE) $@
+	cp src/pride-nyancat .
+
+clean:
+	cd src && $(MAKE) clean
 
 dist: $(distdir).tar.gz
 

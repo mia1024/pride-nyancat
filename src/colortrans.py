@@ -369,7 +369,7 @@ if __name__ == '__main__':
         r=sys.argv[1]
         g=sys.argv[2]
         b=sys.argv[3]
-        arg=hex(int(r))[2:]+hex(int(g))[2:]+hex(int(b))[2:]
+        arg=hex(int(r))[2:].zfill(2)+hex(int(g))[2:].zfill(2)+hex(int(b))[2:].zfill(2)
     else:
         arg = sys.argv[1]
     if len(arg) < 4 and int(arg) < 256:

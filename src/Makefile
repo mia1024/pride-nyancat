@@ -1,17 +1,17 @@
-OBJECTS = nyancat.o
+OBJECTS = pride-nyancat.o
 
 CC	?=
 CFLAGS	 ?= -g -Wall -Wextra -std=c99 -pedantic -Wwrite-strings
 CPPFLAGS ?=
 LDFLAGS  ?=
 
-all: nyancat
+all: pride-nyancat
 
-nyancat: $(OBJECTS)
+pride-nyancat: $(OBJECTS)
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) $(OBJECTS) -o $@
 
 clean:
-	-rm -f $(OBJECTS) nyancat
+	-rm -f $(OBJECTS) pride-nyancat
 
 check: all
 	# Unit tests go here. None currently.
