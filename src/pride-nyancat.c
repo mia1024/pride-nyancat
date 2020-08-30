@@ -180,16 +180,6 @@ void SIGINT_handler(int sig) {
     finish();
 }
 
-/*
- * Handle the alarm which breaks us off of options
- * handling if we didn't receive a terminal
- */
-void SIGALRM_handler(int sig) {
-    (void) sig;
-    alarm(0);
-    longjmp(environment, 1);
-    /* Unreachable */
-}
 
 void SIGWINCH_handler(int sig) {
     (void) sig;
@@ -240,10 +230,6 @@ void usage(char *argv[]) {
             " -e --no-clear   \033[3mDo not clear the display between frames\033[0m\n"
             " -d --delay      \033[3mDelay image rendering by anywhere between 10ms and 1000ms\n"
             " -f --frames     \033[3mDisplay the requested number of frames, then quit\033[0m\n"
-            " -r --min-rows   \033[3mCrop the animation from the top\033[0m\n"
-            " -R --max-rows   \033[3mCrop the animation from the bottom\033[0m\n"
-            " -c --min-cols   \033[3mCrop the animation from the left\033[0m\n"
-            " -C --max-cols   \033[3mCrop the animation from the right\033[0m\n"
             " -W --width      \033[3mCrop the animation to the given width\033[0m\n"
             " -H --height     \033[3mCrop the animation to the given height\033[0m\n"
             " -h --help       \033[3mShow this help message.\033[0m\n"
@@ -288,10 +274,6 @@ int main(int argc, char **argv) {
             {"no-clear",    no_argument,       0, 'e'},
             {"delay",       required_argument, 0, 'd'},
             {"frames",      required_argument, 0, 'f'},
-            {"min-rows",    required_argument, 0, 'r'},
-            {"max-rows",    required_argument, 0, 'R'},
-            {"min-cols",    required_argument, 0, 'c'},
-            {"max-cols",    required_argument, 0, 'C'},
             {"width",       required_argument, 0, 'W'},
             {"height",      required_argument, 0, 'H'},
             {"pride",       required_argument, 0, 'p'},
@@ -303,7 +285,7 @@ int main(int argc, char **argv) {
 
     /* Process arguments */
     int index, c;
-    while ((c = getopt_long(argc, argv, "LGBTQAPNeshnd:f:r:R:c:C:W:H:p:", long_opts, &index)) != -1) {
+    while ((c = getopt_long(argc, argv, "LGBTQAPNeshnd:f:W:H:p:", long_opts, &index)) != -1) {
         if (!c) {
             if (long_opts[index].flag == 0) {
                 c = long_opts[index].val;
@@ -454,8 +436,8 @@ int main(int argc, char **argv) {
 
     int always_escape = 0; /* Used for text mode */
 
-    /* Accept ^C -> restore cursor */
     signal(SIGINT, SIGINT_handler);
+    signal(SIGWINCH,SIGWINCH_handler);
 
     const char ***frames;
     switch (flag) {
