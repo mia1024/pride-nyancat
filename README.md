@@ -1,3 +1,7 @@
+Update: due to popular demands for zoom backgrounds, all pride nyancats have been converted to videos and uploaded under the `vid` [folder](https://github.com/mia1024/pride-nyancat/vid). Those videos are at a much higher resolution (3756✕2140 px) than a GIF image can handle. Each video (except for the video with everything) is at almost exactly 2 seconds and contains the exact number of frames to make the animation loop twice. 
+
+N.B.: Due to the nature of the videos (large area of solid colors), they cannot be perfectly transcoded to .mp4 files. So, when possible, please use the .mov files.  
+
 # Pride Flag Nyancat
 
 Nyancat, but with pride.
