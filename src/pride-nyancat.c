@@ -2,7 +2,7 @@
  * Copyright (c) 2020 Mia Celeste.
  *
  * Pride flags added by:    Mia Celeste
- *                          https://github.com/mia1024/pride-flag-nyancat
+ *                          https://github.com/mia1024/pride-nyancat
  *
  * Animation developed by:  K. Lange
  *                          http://github.com/klange/nyancat
